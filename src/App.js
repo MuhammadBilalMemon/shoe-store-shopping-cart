@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Shoe Shopping Cart Project Using React Router v6</h1>
     </div>
   );
