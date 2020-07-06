@@ -1,0 +1,64 @@
+import React, { useContext } from "react";
+import { ProductContext } from "./../../Context/ProductContext";
+
+import { Link } from "react-router-dom";
+
+import {
+  Button,
+  Grid,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  Typography,
+  CardActions,
+} from "@material-ui/core";
+
+const ProductList = () => {
+  const products = useContext(ProductContext);
+
+  return (
+    <div>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justify="center">
+            {products.products.map((product) => (
+              <Card
+                key={product.productId}
+                style={{ maxWidth: 345, padding: 20, margin: 10 }}
+              >
+                <CardActionArea>
+                  <CardMedia
+                    style={{ height: 250, width: 250 }}
+                    image={product.img}
+                    title={product.productName}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {product.productName}
+                    </Typography>
+                    <Typography component="h4">
+                      ${product.productPrice}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions textalign="center">
+                  <Button variant="outlined" size="small" color="primary">
+                    Add to cart
+                  </Button>
+                  <Link to={`/products/${product.slug}`}>
+                    <Button variant="outlined" size="small" color="secondary">
+                      Details
+                    </Button>
+                  </Link>
+                </CardActions>
+              </Card>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
+
+export default ProductList;
