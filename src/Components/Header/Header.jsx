@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ShoppingCartContext } from "./../../Context/ShoppingCartContext";
 
 import { IconButton, Toolbar, AppBar, Tooltip } from "@material-ui/core";
@@ -28,16 +28,16 @@ const Header = () => {
           </Tooltip>
           <ul className={headerStyles.navList}>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <NavLink to="products">Shop</NavLink>
+              <Link to="products">Shop</Link>
             </li>
+            {/* <li>
+              <Link to="sample">Contact</Link>
+            </li> */}
             <li>
-              <NavLink to="sample">Contact</NavLink>
-            </li>
-            <li>
-              <NavLink to="sample">View Cart ({countItems})</NavLink>
+              <Link to="cart">View Cart ({countItems})</Link>
             </li>
           </ul>
         </Toolbar>

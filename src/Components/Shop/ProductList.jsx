@@ -61,7 +61,7 @@ const ProductList = () => {
                   >
                     Add to cart
                   </Button>
-                  <Link to={`/products/${product.slug}`}>
+                  <Link to={`product/${product.slug}`}>
                     <Button variant="outlined" size="small" color="secondary">
                       Details
                     </Button>

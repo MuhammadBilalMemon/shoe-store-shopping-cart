@@ -11,7 +11,6 @@ const initialState = {
 // Create context
 export const ShoppingCartContext = createContext(initialState);
 
-
 //Provider Component
 export const ShoppintCartProivder = ({ children }) => {
 
@@ -29,9 +28,8 @@ export const ShoppintCartProivder = ({ children }) => {
     return (
 
         <ShoppingCartContext.Provider value={{
-            addProduct,
-            countItems: state.countItems,
-            totalAmount: state.totalAmount
+            ...state,
+            addProduct
         }}>
             {children}
         </ShoppingCartContext.Provider>

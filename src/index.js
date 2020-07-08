@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import Home from './Components/Home';
 import ProductList from './Components/Shop/ProductList';
 import Product from './Components/Shop/Product';
 import ProductDetails from './Components/Shop/ProductDetails';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer';
+import Cart from './Components/ShoppingCart/Cart';
 
 
-import { Routes, Route } from 'react-router-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ProductContextProvider } from './Context/ProductContext';
 import { ShoppintCartProivder } from './Context/ShoppingCartContext';
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,11 +24,12 @@ ReactDOM.render(
             <Header />
             <h1 style={{ textAlign: "center" }}>Shoe Store</h1>
             <Routes>
-              <Route Path="/" element={<Home />} />
+              <Route exact Path="/" element={<Home />} />
               <Route path="products" element={<Product />} >
-                <Route path="/" element={<ProductList />}></Route>
-                <Route path=":slug" element={<ProductDetails />}></Route>
+                <Route path="/" element={<ProductList />} />
+                <Route path="product/:slug" element={<ProductDetails />} />
               </Route>
+              <Route path="cart" element={<Cart />} />
             </Routes>
           </Router>
           <Footer />
