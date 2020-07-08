@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { ShoppingCartContext } from "./../../Context/ShoppingCartContext";
 
 import { IconButton, Toolbar, AppBar, Tooltip } from "@material-ui/core";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -8,6 +9,8 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import headerStyles from "./header.module.css";
 
 const Header = () => {
+  const { countItems } = useContext(ShoppingCartContext);
+
   return (
     <div>
       <AppBar position="static">
@@ -34,7 +37,7 @@ const Header = () => {
               <NavLink to="sample">Contact</NavLink>
             </li>
             <li>
-              <NavLink to="sample">View Cart (0)</NavLink>
+              <NavLink to="sample">View Cart ({countItems})</NavLink>
             </li>
           </ul>
         </Toolbar>

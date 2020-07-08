@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ProductContext } from "./../../Context/ProductContext";
+import { ShoppingCartContext } from "./../../Context/ShoppingCartContext";
 
 import { Link } from "react-router-dom";
 
@@ -16,6 +17,8 @@ import {
 
 const ProductList = () => {
   const products = useContext(ProductContext);
+
+  const { addProduct } = useContext(ShoppingCartContext);
 
   return (
     <div>
@@ -43,7 +46,19 @@ const ProductList = () => {
                   </CardContent>
                 </CardActionArea>
                 <CardActions textalign="center">
-                  <Button variant="outlined" size="small" color="primary">
+                  <Button
+                    onClick={() => {
+                      addProduct({
+                        productId: product.productId,
+                        productName: product.productName,
+                        productPrice: product.productPrice,
+                        productImage: product.img,
+                      });
+                    }}
+                    variant="outlined"
+                    size="small"
+                    color="primary"
+                  >
                     Add to cart
                   </Button>
                   <Link to={`/products/${product.slug}`}>

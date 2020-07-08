@@ -20,7 +20,6 @@ const ProductDetails = () => {
   const filterItem = () => {
     return products.filter((product) => product.slug === slug);
   };
-
   const filterdProduct = filterItem();
 
   return (
@@ -44,7 +43,7 @@ const ProductDetails = () => {
                 <Typography component="h4">${product.productPrice}</Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions textalign="center">
+            <CardActions>
               <Button variant="outlined" size="small" color="primary">
                 Add to cart
               </Button>

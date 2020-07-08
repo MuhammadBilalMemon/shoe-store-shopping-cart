@@ -11,24 +11,27 @@ import Footer from './Components/Footer';
 import { Routes, Route } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { ProductContextProvider } from './Context/ProductContext';
+import { ShoppintCartProivder } from './Context/ShoppingCartContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProductContextProvider>
-      <div style={{ "text-align": "center" }}>
-        <Router>
-          <Header />
-          <h1 style={{ textAlign: "center" }}>Shoe Store</h1>
-          <Routes>
-            <Route Path="/" element={<Home />} />
-            <Route path="products" element={<Product />} >
-              <Route path="/" element={<ProductList />}></Route>
-              <Route path=":slug" element={<ProductDetails />}></Route>
-            </Route>
-          </Routes>
-        </Router>
-        <Footer />
-      </div>
+      <ShoppintCartProivder>
+        <div style={{ "text-align": "center" }}>
+          <Router>
+            <Header />
+            <h1 style={{ textAlign: "center" }}>Shoe Store</h1>
+            <Routes>
+              <Route Path="/" element={<Home />} />
+              <Route path="products" element={<Product />} >
+                <Route path="/" element={<ProductList />}></Route>
+                <Route path=":slug" element={<ProductDetails />}></Route>
+              </Route>
+            </Routes>
+          </Router>
+          <Footer />
+        </div>
+      </ShoppintCartProivder>
     </ProductContextProvider>
   </React.StrictMode >,
   document.getElementById('root')
