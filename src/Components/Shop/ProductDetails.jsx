@@ -3,14 +3,12 @@ import { useParams } from "react-router-dom";
 import { ProductContext } from "./../../Context/ProductContext";
 
 import {
-  Button,
   Grid,
   Card,
   CardActionArea,
   CardMedia,
   CardContent,
   Typography,
-  CardActions,
 } from "@material-ui/core";
 
 const ProductDetails = () => {
