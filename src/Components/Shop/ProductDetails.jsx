@@ -43,11 +43,6 @@ const ProductDetails = () => {
                 <Typography component="h4">${product.productPrice}</Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
-              <Button variant="outlined" size="small" color="primary">
-                Add to cart
-              </Button>
-            </CardActions>
           </Card>
         ))}
       </Grid>

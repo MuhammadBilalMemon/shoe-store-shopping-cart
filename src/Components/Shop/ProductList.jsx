@@ -18,7 +18,13 @@ import {
 const ProductList = () => {
   const products = useContext(ProductContext);
 
-  const { addProduct } = useContext(ShoppingCartContext);
+  const { addProduct, increment, addCartToItems } = useContext(
+    ShoppingCartContext
+  );
+
+  const ItemInCart = (product) => {
+    return addCartToItems.find((item) => item.productId === product.productId);
+  };
 
   return (
     <div>
@@ -46,21 +52,42 @@ const ProductList = () => {
                   </CardContent>
                 </CardActionArea>
                 <CardActions textalign="center">
-                  <Button
-                    onClick={() => {
-                      addProduct({
-                        productId: product.productId,
-                        productName: product.productName,
-                        productPrice: product.productPrice,
-                        productImage: product.img,
-                      });
-                    }}
-                    variant="outlined"
-                    size="small"
-                    color="primary"
-                  >
-                    Add to cart
-                  </Button>
+                  {!ItemInCart(product) && (
+                    <Button
+                      onClick={() => {
+                        addProduct({
+                          productId: product.productId,
+                          productName: product.productName,
+                          productPrice: product.productPrice,
+                          productImage: product.img,
+                        });
+                      }}
+                      variant="outlined"
+                      size="small"
+                      color="primary"
+                    >
+                      Add to cart
+                    </Button>
+                  )}
+
+                  {ItemInCart(product) && (
+                    <Button
+                      onClick={() => {
+                        increment({
+                          productId: product.productId,
+                          productName: product.productName,
+                          productPrice: product.productPrice,
+                          productImage: product.img,
+                        });
+                      }}
+                      variant="outlined"
+                      size="small"
+                      color="primary"
+                    >
+                      Add more
+                    </Button>
+                  )}
+
                   <Link to={`product/${product.slug}`}>
                     <Button variant="outlined" size="small" color="secondary">
                       Details

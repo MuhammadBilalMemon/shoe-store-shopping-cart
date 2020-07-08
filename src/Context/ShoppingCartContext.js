@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import { CartReducer, ADD_TO_CART } from './CartReducer'
+import { CartReducer, ADD_TO_CART, REMOVE_FROM_CARD, INCREMENT_PRODUCT, DECREMENT_PRODUCT } from './CartReducer'
 
 // Initial State
 const initialState = {
@@ -24,12 +24,30 @@ export const ShoppintCartProivder = ({ children }) => {
             payload: shoeItem
         })
     }
+    const removeProduct = (productId) => {
+        dispatch({
+            type: REMOVE_FROM_CARD,
+            payload: productId
+        })
+    }
+
+    const increment = (shoeItem) => {
+
+        dispatch({ type: INCREMENT_PRODUCT, payload: shoeItem })
+    }
+
+    const decrement = (shoeItem) => {
+        dispatch({ type: DECREMENT_PRODUCT, payload: shoeItem })
+    }
 
     return (
 
         <ShoppingCartContext.Provider value={{
             ...state,
-            addProduct
+            addProduct,
+            removeProduct,
+            increment,
+            decrement
         }}>
             {children}
         </ShoppingCartContext.Provider>
